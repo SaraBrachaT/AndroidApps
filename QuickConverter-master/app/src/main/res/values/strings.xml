@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Quick Converter</string>
+    <string name="action_settings">Settings</string>
+    <string name="banner_instructions">Please input the number to convert, and choose the conversion type.</string>
+    <string name="number_to_convert">Enter here the number to convert</string>
+    <string name="miles_to_kilometers">Miles to Kilometers</string>
+    <string name="kilometers_to_miles">Kilometers to Miles</string>
+    <string name="pounds_to_kilograms">Pounds to Kilograms</string>
+    <string name="kilograms_to_pounds">Kilograms to Pounds</string>
+    <string name="about">About</string>
+    <string name="pounds_to_ounces">Pounds to Ounces</string>
+    <string name="ounces_to_pound">Ounces to Pounds</string>
+</resources>

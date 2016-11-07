@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/input_area"
+    tools:showIn="@layout/content_main">
+
+    <com.mintedtech.quick_converter.lib.RadioGridGroup
+        android:id="@+id/rg_conversion_choices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:columnCount="@integer/columns"
+        >
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/rdo_miles_to_km"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="calculateAndOutputResult"
+            android:text="@string/miles_to_kilometers"
+            android:textSize="@dimen/et_text_size"
+            />
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/rdo_km_to_miles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="calculateAndOutputResult"
+            android:text="@string/kilometers_to_miles"
+            android:textSize="@dimen/et_text_size"
+            />
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/rdo_lb_to_kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="calculateAndOutputResult"
+            android:text="@string/pounds_to_kilograms"
+            android:textSize="@dimen/et_text_size"
+            />
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/rdo_kg_to_lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="calculateAndOutputResult"
+            android:text="@string/kilograms_to_pounds"
+            android:textSize="@dimen/et_text_size"
+            />
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/rdo_lb_to_oz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="calculateAndOutputResult"
+            android:text="@string/pounds_to_ounces"
+            android:textSize="@dimen/et_text_size"
+            />
+
+        <android.support.v7.widget.AppCompatRadioButton
+            android:id="@+id/rdo_oz_to_lb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:onClick="calculateAndOutputResult"
+            android:text="@string/ounces_to_pound"
+            android:textSize="@dimen/et_text_size"
+            />
+
+    </com.mintedtech.quick_converter.lib.RadioGridGroup>
+</ScrollView>
