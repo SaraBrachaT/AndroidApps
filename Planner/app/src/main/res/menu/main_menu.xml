@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.Planner.activities.MainActivity">
+    <item
+        android:id="@+id/action_createSchedule"
+        android:title="@string/create_new_schedule"
+        android:icon="@drawable/"
+        app:showAsAction="ifRoom|withText"
+        android:onClick="createNewSchedule"
+        />
+    <item
+        android:id="@+id/action_editTask"
+        android:title="@string/edit_task"
+        android:icon="@drawable/"
+        app:showAsAction="ifRoom|withText"
+        android:onClick="EditTask"
+        />
+    <item
+        android:id="@+id/action_RemoveTask"
+        android:title="@string/remove_task"
+        android:icon="@drawable/"
+        app:showAsAction="ifRoom|withText"
+        android:onClick="RemoveTask"
+        />
+
+</menu>
