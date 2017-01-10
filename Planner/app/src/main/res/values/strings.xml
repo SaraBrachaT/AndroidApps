@@ -3,4 +3,5 @@
     <string name="create_new_schedule">Create New Schedule</string>
     <string name="edit_task">edit task</string>
     <string name="remove_task">remove task</string>
+    <string name="when_would_you_like_to_start_your_day">When would you like to start your day</string>
 </resources>

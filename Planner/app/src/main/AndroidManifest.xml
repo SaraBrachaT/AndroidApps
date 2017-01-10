@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TaskEntryActivity"></activity>
+        <activity android:name=".TaskEntryActivity" />
+        <activity android:name=".ScheduleTimeEntryActivity"></activity>
     </application>
 
 </manifest>

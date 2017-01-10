@@ -10,6 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sarabracha.planner.TaskEntryActivity">
 
+
+
+
     <include
         layout="@layout/task_entry"/>
 </RelativeLayout>
