@@ -19,9 +19,9 @@ public class TaskEntryActivity extends AppCompatActivity {
         getTask();
     }
 
-    @Override
+
     public void getTask() {
-        if(R.t)
+        //if(R.t)
     }
 
     public void activity_specificTime_clicked(View view) {

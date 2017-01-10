@@ -6,13 +6,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    private ArrayList<Task> mCurrentSchedule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        onCreateOptionsMenu(main_menu);
+        mCurrentSchedule = new ArrayList<>();
     }
 
     @Override
@@ -23,19 +27,39 @@ public class MainActivity extends AppCompatActivity {
 
     public void createNewSchedule(MenuItem item) {
 
+        // create a schedule
+        mCurrentSchedule = new ArrayList<>();
+
+        editSchedule();
+    }
+
+    public void editSchedule(MenuItem item) {
+        editSchedule();
+    }
+
+    private void editSchedule() {
         Intent intent = new Intent(this, TaskEntryActivity.class);
+
+        // add that schedule to the intent
+        intent.putParcelableArrayListExtra("SCHEDULE", mCurrentSchedule);
+
+        // Launch the activity
         startActivityForResult(intent, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode)
+        {
+            case 0:
+                processIncomingData();
+
+        }
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void EditTask(MenuItem item) {
-    }
 
-    public void RemoveTask(MenuItem item) {
-
+    private void processIncomingData() {
     }
 }

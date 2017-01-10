@@ -5,23 +5,31 @@
     <item
         android:id="@+id/action_createSchedule"
         android:title="@string/create_new_schedule"
-        android:icon="@drawable/"
+
         app:showAsAction="ifRoom|withText"
         android:onClick="createNewSchedule"
         />
     <item
-        android:id="@+id/action_editTask"
-        android:title="@string/edit_task"
-        android:icon="@drawable/"
+        android:id="@+id/action_editSchedule"
+        android:title="Edit your existing schedule"
         app:showAsAction="ifRoom|withText"
-        android:onClick="EditTask"
-        />
-    <item
-        android:id="@+id/action_RemoveTask"
-        android:title="@string/remove_task"
-        android:icon="@drawable/"
-        app:showAsAction="ifRoom|withText"
-        android:onClick="RemoveTask"
+        android:onClick="editSchedule"
         />
 
+<!--
+    <item
+        android:id="@+id/action_editTask"
+        android:onClick="EditTask"
+
+        android:title="@string/edit_task"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_RemoveTask"
+        android:onClick="RemoveTask"
+
+        android:title="@string/remove_task"
+        app:showAsAction="ifRoom|withText" />
+
 </menu>
+-->
+<!-- Add drawables -->
