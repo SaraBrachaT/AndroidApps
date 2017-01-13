@@ -1,4 +1,4 @@
-package com.example.sarabracha.perpetualmotion.Activities;
+package com.example.sarabracha.perpetualmotion.activities;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;

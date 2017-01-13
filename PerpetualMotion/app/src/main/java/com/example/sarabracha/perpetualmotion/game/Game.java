@@ -7,17 +7,32 @@ public class Game {
     private int deckCount;
     private int cardsLeft;
     private boolean lastTurnCanBeUndone, lastTurnWasADiscard;
+    private Card[] tentativeTopCardsAtLastTurn, finalTopCardsAtLastTurn;
+
+    private final int NUMBER_OF_STACKS = 4;
 
     public Game() {
         deck = new Deck();
         deckCount = 52;
+        cardsLeft = 52;
 
         deck.shuffle();
-        stacks = (Stack<Card>[]) new Stack[4];
+        stacks = (Stack<Card>[]) new Stack[NUMBER_OF_STACKS];
         for (int i = 0; i < stacks.length; i++) {
             stacks[i] = new Stack<Card>();
             stacks[i].push(deck.deal());
         }
+        deckCount -= 4;
+        setupUndo();
+    }
+
+    private void setupUndo ()
+    {
+        tentativeTopCardsAtLastTurn = new Card[NUMBER_OF_STACKS];
+        finalTopCardsAtLastTurn = tentativeTopCardsAtLastTurn.clone ();
+
+        lastTurnWasADiscard = false;
+        lastTurnCanBeUndone = false;
     }
 
     public void discard(int stack1, int stack2) {
@@ -34,15 +49,15 @@ public class Game {
 	if (stacks[stack1].peek().getRank().getRankNumber() == (stacks[stack2].peek().getRank().getRankNumber())) {
 	    stacks[stack1].pop();
 	    stacks[stack2].pop();
-	    deckCount = deckCount - 2;
+	    cardsLeft -= 2;
 	} else if (stacks[stack1].peek().getSuit().equals(stacks[stack2].peek().getSuit())) {	//the player has to find the 2 stacks of the same suit. Otherwise, they could just click around...not as fun
 	    if (stacks[stack1].peek().getRank().getRankNumber() < (stacks[stack2].peek().getRank().getRankNumber())) {
 		stacks[stack1].pop();
-		deckCount--;
+            cardsLeft--;
 	    } else if (stacks[stack1].peek().getRank()
 		    .getRankNumber() > (stacks[stack2].peek().getRank().getRankNumber())) {
 		stacks[stack2].pop();
-		deckCount--;
+            cardsLeft--;
 	    }
 	} else {
 //	    gui.setInvalidMove(true); // BUT...FOR HOW LONG?? refresh display
@@ -55,6 +70,7 @@ public class Game {
 	    Card c = deck.deal();
 	    stacks[i].push(c);
 	}
+        deckCount -=4;
 
 	if (deck.isEmpty()) {
 //	    gui.getDeckButton().setOpaque(true);
@@ -331,7 +347,7 @@ public class Game {
          */
         public int getNumCardsLeftToDiscard ()
         {
-            return deck.getSize () + getNumberOfCardsLeftInAllStacks ();
+            return cardsLeft;
         }
 
 
@@ -374,7 +390,7 @@ public class Game {
          */
         public boolean isWinner()
         {
-            return deck.getSize () == 0;
+            return cardsLeft == 0;
         }
 
         /**
