@@ -16,6 +16,7 @@
         <EditText
             android:id="@+id/taskName"
             android:layout_width="wrap_content"
+            android:ems="20"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -26,7 +27,9 @@
         <EditText
             android:id="@+id/taskDescription"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:inputType="textAutoCorrect"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +39,8 @@
         <EditText
             android:id="@+id/taskPriority"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="20"/>
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -61,41 +65,42 @@
             android:layout_height="wrap_content"
             android:id="@+id/Enter_start_time"
             android:text="Select Task Start Time"
-            android:visibility="invisible"
+            android:visibility="gone"
             />
 
         <TimePicker
             android:id="@+id/startTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"></TimePicker>
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Enter_end_time"
             android:text="Select Task End Time"
-            android:visibility="invisible"
+            android:visibility="gone"
             />
 
         <TimePicker
             android:id="@+id/endTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"></TimePicker>
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enter amount of time in minutes"
             android:id="@+id/enter_amount_of_time"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/amountOfTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"/>
+            android:ems="20"
+            android:visibility="gone"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -106,6 +111,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="create_schedule"
             android:text="View Schedule" />
     </LinearLayout>
 </ScrollView>
