@@ -37,45 +37,46 @@ public class Game {
 
     public void discard(int stack1, int stack2) {
 	if (stacks[stack1].equals(stacks[stack2])) {
-	   // display(); // do nothing, refresh
-	    return;
+        return;
 	}
 
 	if (stacks[stack1].isEmpty() || stacks[stack2].isEmpty()) {
-//	    gui.setInvalidMove(true);
 	    return;
 	}
 
 	if (stacks[stack1].peek().getRank().getRankNumber() == (stacks[stack2].peek().getRank().getRankNumber())) {
+        saveTentativePriorTurnInformation ();
 	    stacks[stack1].pop();
 	    stacks[stack2].pop();
+        commitPriorTurnInformationAndSetUndoTypeTo (true);
 	    cardsLeft -= 2;
-	} else if (stacks[stack1].peek().getSuit().equals(stacks[stack2].peek().getSuit())) {	//the player has to find the 2 stacks of the same suit. Otherwise, they could just click around...not as fun
+	}
+    else if (stacks[stack1].peek().getSuit().equals(stacks[stack2].peek().getSuit())) {	//the player has to find the 2 stacks of the same suit. Otherwise, they could just click around...not as fun
 	    if (stacks[stack1].peek().getRank().getRankNumber() < (stacks[stack2].peek().getRank().getRankNumber())) {
+            saveTentativePriorTurnInformation ();
 		stacks[stack1].pop();
+            commitPriorTurnInformationAndSetUndoTypeTo (true);
             cardsLeft--;
 	    } else if (stacks[stack1].peek().getRank()
 		    .getRankNumber() > (stacks[stack2].peek().getRank().getRankNumber())) {
+            saveTentativePriorTurnInformation ();
 		stacks[stack2].pop();
+            commitPriorTurnInformationAndSetUndoTypeTo (true);
             cardsLeft--;
 	    }
-	} else {
-//	    gui.setInvalidMove(true); // BUT...FOR HOW LONG?? refresh display
-				      // next time so remove this
 	}
     }
 
     public void clickDeal() {
+        saveTentativePriorTurnInformation ();
 	for (int i = 0; i < stacks.length; i++) {
 	    Card c = deck.deal();
 	    stacks[i].push(c);
 	}
         deckCount -=4;
+        commitPriorTurnInformationAndSetUndoTypeTo (false);
 
 	if (deck.isEmpty()) {
-//	    gui.getDeckButton().setOpaque(true);
-//	    gui.getDeckButton().setBackground(Color.BLUE);
-//	    gui.getDeckButton().setText("No Cards Left");
 	    return;
 	}
 
@@ -92,56 +93,6 @@ public class Game {
 		return deckCount;
 	}
 
-
-   /*     private Stack<Card>[] stacks;
-        private Card[] tentativeTopCardsAtLastTurn, finalTopCardsAtLastTurn;
-        private boolean lastTurnWasADiscard,
-        private final int NUMBER_OF_STACKS = 4;
-        private Deck deck;
-
-
-        /**
-         * No-arg constructor.
-         * Process:
-         * Creates a new Deck of 52 cards
-         * Creates four empty stacks of cards
-         * Deals one card to each Stack
-         */
-/*        public Game ()
-        {
-            setupDeck ();
-            setupStacks ();
-            setupUndo ();
-            dealOneCardToEachStack ();
-        }
-
-        private void setupUndo ()
-        {
-            tentativeTopCardsAtLastTurn = new Card[NUMBER_OF_STACKS];
-            finalTopCardsAtLastTurn = tentativeTopCardsAtLastTurn.clone ();
-
-            lastTurnWasADiscard = false;
-            lastTurnCanBeUndone = false;
-        }
-
-        private void setupDeck ()
-        {
-            deck = new Deck ();         // use default Deck constructor which will set 1 set==52 cards
-            deck.shuffle ();        // game would be pretty predictable otherwise...
-        }
-
-        private void setupStacks ()
-        {
-            stacks = (Stack<Card>[]) new Stack[NUMBER_OF_STACKS];
-            for (int i = 0; i < 4; i++) {
-                stacks[i] = new Stack<> ();
-            }
-        }
-
-        /**
-         * Allows the user to undo the most recent turn.
-         * @throws UnsupportedOperationException if either the game has just begun or the most recent turn has already been undone
-         */
        public void undoLatestTurn ()
         {
             if (lastTurnCanBeUndone) {
@@ -209,30 +160,7 @@ public class Game {
                     tentativeTopCardsAtLastTurn.length);
         }
 
-        /**
-         * Deals one card to the each stack.
-         * If all cards have already been dealt then this will pass on from Deck's deal method
-         * to the calling method an IllegalArgumentException, which should be handled there (it is).
-         * @throws java.util.EmptyStackException if the Deck is empty
-         */
-    /*    public void dealOneCardToEachStack ()
-        {
-            // This runs unconditionally, even if other options are available
-            saveTentativePriorTurnInformation ();
 
-            for (Stack<Card> stack : stacks) { //deal four cards , one to each stack
-                stack.push (deck.deal());
-            }
-            commitPriorTurnInformationAndSetUndoTypeTo (false);
-        }
-
-        /**
-         * Discards one card from the selected stack if another stack top has another of the same suit.
-         * Saves undo state information before attempting to remove the cards.
-         * Commits that information only after removal is successful
-         * @param pileNo the stack from which to discard the top card
-         * @throws UnsupportedOperationException if another higher card of the same suit is not found
-         */
       /*  public void discardOneLowestOfSameSuit (int pileNo)
         {
             boolean moveFound=false;
@@ -295,19 +223,7 @@ public class Game {
             }
         }
 
-        /**
-         * Gets the number of cards remaining in the deck.
-         * @return number of cards remaining in the deck.
-         */
-/*        public int getNumberOfCardsLeftInDeck ()
-        {
-            return deck.getSize ();
-        }
-
-        /**
-         * Gets the number of cards left in all stacks, including ones below the top.
-         * @return total number of cards in stacks
-         */
+        */
        public int getNumberOfCardsLeftInAllStacks ()
         {
             int cardsInStacks = 0;
