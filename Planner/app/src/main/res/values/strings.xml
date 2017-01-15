@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Planner</string>
-    <string name="create_new_schedule">Create New Schedule</string>
-    <string name="edit_task">edit task</string>
-    <string name="remove_task">remove task</string>
-</resources>
