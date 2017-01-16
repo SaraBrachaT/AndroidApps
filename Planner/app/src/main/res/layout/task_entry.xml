@@ -1,86 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Enter Task Name"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/taskName"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Enter Task Description"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/taskDescription"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Task Priority (1 is highest, 3 is lowest)"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/taskPriority"
-        />
-
-    <RadioButton
-        android:text="This task has a specific start and end time"
-        android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/radioButtonSpecific"
-        android:onClick="activity_specificTime_clicked"/>
+        android:orientation="vertical">
 
-    <RadioButton
-        android:text="This task can be done at any time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/radioButtonNotSpecific"
-        android:onClick="activity_notSpecificTime_clicked"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Task Name" />
 
-    <TimePicker
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:id="@+id/startTime">
-    </TimePicker>
+        <EditText
+            android:id="@+id/taskName"
+            android:layout_width="wrap_content"
+            android:ems="20"
+            android:layout_height="wrap_content" />
 
-    <TimePicker
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:id="@+id/endTime">
-    </TimePicker>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Task Description" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/amountOfTime"/>
+        <EditText
+            android:id="@+id/taskDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:inputType="textAutoCorrect"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Add Additional Task"
-        android:onClick="action_additional_task"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Task Priority (1 is highest, 3 is lowest)" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="View Schedule" />
-</LinearLayout>
+        <EditText
+            android:id="@+id/taskPriority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/radioButtonSpecific"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="activity_specificTime_clicked"
+            android:text="This task has a specific start and end time" />
+
+        <RadioButton
+            android:id="@+id/radioButtonNotSpecific"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="activity_notSpecificTime_clicked"
+            android:text="This task can be done at any time" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Enter_start_time"
+            android:text="Select Task Start Time"
+            android:visibility="gone"
+            />
+
+        <TimePicker
+            android:id="@+id/startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Enter_end_time"
+            android:text="Select Task End Time"
+            android:visibility="gone"
+            />
+
+        <TimePicker
+            android:id="@+id/endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter amount of time in minutes"
+            android:id="@+id/enter_amount_of_time"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/amountOfTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:visibility="gone"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="action_additional_task"
+            android:text="Add Additional Task" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="create_schedule"
+            android:text="View Schedule" />
+    </LinearLayout>
+</ScrollView>

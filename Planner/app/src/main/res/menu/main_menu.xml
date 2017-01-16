@@ -6,13 +6,13 @@
         android:id="@+id/action_createSchedule"
         android:title="@string/create_new_schedule"
 
-        app:showAsAction="ifRoom|withText"
+        app:showAsAction="never"
         android:onClick="createNewSchedule"
         />
     <item
         android:id="@+id/action_editSchedule"
-        android:title="Edit your existing schedule"
-        app:showAsAction="ifRoom|withText"
+        android:title="Add Additional Task"
+        app:showAsAction="never"
         android:onClick="editSchedule"
         />
 
@@ -30,6 +30,8 @@
         android:title="@string/remove_task"
         app:showAsAction="ifRoom|withText" />
 
-</menu>
+
 -->
 <!-- Add drawables -->
+
+</menu>

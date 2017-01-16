@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Homework3</string>
+    <string name="guesses_taken_0">Guesses taken: 0</string>
+    <string name="Instructions">Please guess the winning number.</string>
+    <string name="new_game">New Game</string>
 </resources>
