@@ -10,11 +10,17 @@
         android:onClick="createNewSchedule"
         />
     <item
+        android:id="@+id/action_viewSchedule"
+        android:title="@string/view_schedule"
+        app:showAsAction="never"
+        android:onClick="viewSchedule"
+        />
+<!--    <item
         android:id="@+id/action_editSchedule"
         android:title="Add Additional Task"
         app:showAsAction="never"
         android:onClick="editSchedule"
-        />
+        />-->
 
 <!--
     <item

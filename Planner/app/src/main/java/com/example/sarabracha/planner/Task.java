@@ -39,6 +39,24 @@ public class Task {
         this.amountOfTime = amountOfTime;
     }
 
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: ");
+        sb.append(this.name);
+        sb.append("Description: ");
+        sb.append(this.description);
+        sb.append("Priority: ");
+        sb.append(this.priority);
+        sb.append("Start Time: ");
+        sb.append(this.startTime);
+        sb.append("End Time:");
+        sb.append(this.endTime);
+
+        return sb.toString();
+    }
+
+
     public boolean isSpecificTime() {
         return specificTime;
     }

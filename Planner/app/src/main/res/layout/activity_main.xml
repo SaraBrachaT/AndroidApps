@@ -21,7 +21,7 @@
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_bright"
         android:fontFamily="cursive"
-        android:textSize="90dp"/>
+        android:textSize="60dp"/>
 
 </LinearLayout>
 </ScrollView>

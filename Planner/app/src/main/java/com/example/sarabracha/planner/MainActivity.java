@@ -1,22 +1,20 @@
 package com.example.sarabracha.planner;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Task> mCurrentSchedule;
+    private Schedule mCurrentSchedule;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mCurrentSchedule = new ArrayList<>();
+
     }
 
     @Override
@@ -26,22 +24,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNewSchedule(MenuItem item) {
-
-        // create a schedule
-        mCurrentSchedule = new ArrayList<>();
-
-        editSchedule();
+        createSchedule();
     }
 
-    public void editSchedule(MenuItem item) {
-        editSchedule();
-    }
-
-    private void editSchedule() {
-        Intent intent = new Intent(this, TaskEntryActivity.class);
-
-        // add that schedule to the intent
-        intent.putParcelableArrayListExtra("SCHEDULE", mCurrentSchedule);
+    private void createSchedule() {
+        Intent intent = new Intent(this, ScheduleTimeEntryActivity.class);
 
         // Launch the activity
         startActivityForResult(intent, 0);
@@ -52,14 +39,49 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode)
         {
             case 0:
-                processIncomingData();
+                processIncomingNewSchedule(data);
 
+            case 1:
+                processIncomingTasksData(data);
         }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    private void processIncomingTasksData(Intent data) {
+        mCurrentSchedule = Schedule.restoreFromJSON(data.getStringExtra("Schedule"));
+        viewSchedule();
+    }
 
-    private void processIncomingData() {
+
+    private void processIncomingNewSchedule(Intent data) {
+        mCurrentSchedule = Schedule.restoreFromJSON(data.getStringExtra("Schedule"));
+        createTasksForSchedule();
+
+    }
+
+    private void createTasksForSchedule() {
+        Intent intent = new Intent(this, TaskEntryActivity.class);
+        intent.putExtra("Schedule", Schedule.getJSONof(mCurrentSchedule));
+
+        // Launch the activity
+        startActivityForResult(intent, 1);
+    }
+
+    public void viewSchedule(MenuItem item) {
+        viewSchedule();
+    }
+
+    private void viewSchedule() {
+        if (mCurrentSchedule==null || mCurrentSchedule.getNumberOfTasks() < 1)
+        {
+            Snackbar.make(findViewById(R.id.activity_main),"Please create a schedule first.",
+                    Snackbar.LENGTH_LONG).show();
+        }
+        else {
+            Intent intent = new Intent(getApplicationContext(), DisplayScheduleActivity.class);
+            intent.putExtra("Schedule", Schedule.getJSONof(mCurrentSchedule));
+            startActivity(intent);
+        }
     }
 }

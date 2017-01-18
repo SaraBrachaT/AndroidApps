@@ -5,4 +5,6 @@
     <string name="remove_task">remove task</string>
     <string name="when_would_you_like_to_start_your_day">When would you like to start your day</string>
     <string name="welcome_message">BE \nORGANIZED \nFOR \nLIFE!</string>
+    <string name="title_activity_display_schedule">DisplayScheduleActivity</string>
+    <string name="view_schedule">View Schedule</string>
 </resources>

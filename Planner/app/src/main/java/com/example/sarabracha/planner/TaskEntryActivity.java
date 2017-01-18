@@ -5,22 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 
 public class TaskEntryActivity extends AppCompatActivity {
 
-    ArrayList<Task> timeSpecific;
-    ArrayList<Task> notTimeSpecific;
     boolean timeSpecificActivity;
-    ArrayList<Task> mCurrentSchedule;
+    Schedule mSchedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_entry);
-        getTask();
+
+        processIncomingData();
+    }
+
+    private void processIncomingData() {
+        mSchedule = Schedule.restoreFromJSON(getIntent().getStringExtra("Schedule"));
     }
 
     @Override
@@ -28,27 +29,6 @@ public class TaskEntryActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         // save here whatever fields you have;
         // The views get saved automatically
-    }
-
-    public void getTask() {
-        //if(R.t)
-    }
-
-
-    private void editSchedule() {
-
-        Intent intent = new Intent(this, TaskEntryActivity.class);
-
-        // add that schedule to the intent
-        intent.putExtra("SCHEDULE", getJSONof(mCurrentSchedule));
-
-        // Launch the activity
-        startActivityForResult(intent, 0);
-    }
-    private ArrayList<Task> restoreScheduleFromJSON(String json)
-    {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ArrayList.class);
     }
 
     public void activity_specificTime_clicked(View view) {
@@ -73,23 +53,25 @@ public class TaskEntryActivity extends AppCompatActivity {
     }
 
     public void action_additional_task(View view) {
-      }
+        // TODO: take the current data and add it to a new task object
+        // mSchedule.addTask(theNewTask);
+        // clear the fields (.setText(""));
+    }
 
     public void create_schedule(View view) {
         createSchedule();
     }
 
-    public void createSchedule()
-    {
-
-     //   if(R.id.radioButtonSpecific = 1)
-       //     mCurrentSchedule.add(new Task((R.id.taskName, R.id.taskDescription, R.id.)));
+    public void createSchedule() {
+        finish();
     }
 
-
-    private String getJSONof(ArrayList<Task> obj)
-    {
-        Gson gson = new Gson();
-        return gson.toJson(obj);
+    @Override
+    public void finish() {
+        Intent results = new Intent();
+        results.putExtra("Schedule", Schedule.getJSONof(mSchedule));
+        setResult(RESULT_OK, results);
+        super.finish();
     }
+
 }

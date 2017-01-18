@@ -16,7 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".TaskEntryActivity" />
-        <activity android:name=".ScheduleTimeEntryActivity"></activity>
+        <activity android:name=".ScheduleTimeEntryActivity" />
+        <activity
+            android:name=".DisplayScheduleActivity"
+            android:label="@string/title_activity_display_schedule"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
